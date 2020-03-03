@@ -27,7 +27,7 @@ websocket.on('connection', function(socket){
     console.log('JOINED:' + name);
 
     //send the new person previous messages
-    for(var i = 1; i<previous_messages.length;i++){
+    for(var i = 0; i<previous_messages.length;i++){
       socket.emit('chat message',previous_messages[i])
     }
 
@@ -42,7 +42,8 @@ websocket.on('connection', function(socket){
     //msg.message = PluginManager.runChatPlugins(msg.message)
 
     //save to log of previous messages
-    previous_messages = [previous_messages, msg];
+    previous_messages.push(msg);
+    console.log(previous_messages)
     //send to the other connected clients
     socket.emit('chat message',msg);
     socket.broadcast.emit('chat message',msg);
