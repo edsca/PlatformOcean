@@ -1,13 +1,11 @@
 # PlatformOcean
 A customisable social media Meta-platform to support social coordination of groups
 
+Requires Nodejs to run.
 
-dependencies:
+run:
+npm install to install the required dependencies for this node js project
 
-express - allow communication over http
-socketio - connecting clients via websockets
-mongojs - storing messages
 
 run with:
-
 node server.js
