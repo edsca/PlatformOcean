@@ -16,7 +16,8 @@ class WordFilter {
   run(msg){
     for(var i = 0;i<this.filterList.length;i++)
     {
-      msg = msg.replace(this.filterList[i],"*");
+      msg = msg.split(this.filterList[i]).join("*");
+      //msg = msg.replace(this.filterList[i],"*");
     }
     return msg;
   }
