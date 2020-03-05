@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_list>
+  <plugin>
+    <id>WordFilter</id>
+    <type>chat</type>
+    <active>TRUE</active>
+  </plugin>
+  <plugin>
+    <id>Voting</id>
+    <type>chat</type>
+    <active>FALSE</active>
+  </plugin>
+</plugin_list>

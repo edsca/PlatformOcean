@@ -2,7 +2,9 @@ var express = require('express');
 var http = require('http');
 var socketio = require('socket.io');
 
-//const PluginManager = new require('./plugins/PluginManager')();
+
+const Pm = require('./PluginManager');
+const pm = new Pm();
 
 
 var app = express();
@@ -39,7 +41,7 @@ websocket.on('connection', function(socket){
     console.log(msg);
 
     //run any plugin functiolnality on tihs message
-    //msg.message = PluginManager.runChatPlugins(msg.message)
+    msg.message = pm.runChatPlugins(msg.message)
 
     //save to log of previous messages
     previous_messages.push(msg);
