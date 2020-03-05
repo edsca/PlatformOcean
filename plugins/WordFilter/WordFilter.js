@@ -16,7 +16,7 @@ class WordFilter {
   run(msg){
     for(var i = 0;i<this.filterList.length;i++)
     {
-      msg = msg.split(this.filterList[i]).join("*");
+      msg = msg.replace(new RegExp(this.filterList[i], 'gi'),"*");
       //msg = msg.replace(this.filterList[i],"*");
     }
     return msg;
