@@ -10,4 +10,14 @@
     <type>chat</type>
     <active>FALSE</active>
   </plugin>
+  <plugin>
+    <id>DB</id>
+    <type>database</type>
+    <active>TRUE</active>
+  </plugin>
+  <plugin>
+    <id>WorkAllocation</id>
+    <type>chat</type>
+    <active>TRUE</active>
+  </plugin>
 </plugin_list>

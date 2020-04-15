@@ -27,7 +27,7 @@ websocket.on('connection', function(socket){
   });
   socket.on('JOINED', function(name){
     console.log('JOINED:' + name);
-
+    pm.database.addUser(name);
     //send the new person previous messages
     for(var i = 0; i<previous_messages.length;i++){
       socket.emit('chat message',previous_messages[i])
@@ -39,9 +39,9 @@ websocket.on('connection', function(socket){
   socket.on("MSSG1",function(msg){
     //print out
     console.log(msg);
-
+    pm.database.addMessage(msg);
     //run any plugin functiolnality on tihs message
-    msg.message = pm.runChatPlugins(msg.message)
+    msg = pm.runChatPlugins(msg)
 
     //save to log of previous messages
     previous_messages.push(msg);
