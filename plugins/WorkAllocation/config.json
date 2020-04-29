@@ -1,12 +1,10 @@
  {
   "jobList": [
     {
-      "id": 0,
       "description": "a sample job",
       "assignee": "None"
     },
     {
-      "id": 1,
       "description": "another sample job",
       "assignee": "None"
     }
