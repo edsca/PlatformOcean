@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin_list>
-  <plugin>
-    <id>WordFilter</id>
-    <type>chat</type>
-    <active>TRUE</active>
-  </plugin>
-  <plugin>
-    <id>Voting</id>
-    <type>chat</type>
-    <active>FALSE</active>
-  </plugin>
-  <plugin>
-    <id>DB</id>
-    <type>database</type>
-    <active>TRUE</active>
-  </plugin>
-  <plugin>
-    <id>WorkAllocation</id>
-    <type>chat</type>
-    <active>TRUE</active>
-  </plugin>
+  <chat_plugins>
+    <plugin>
+      <id>WordFilter</id>
+      <active>TRUE</active>
+    </plugin>
+    <plugin>
+      <id>Voting</id>
+      <active>FALSE</active>
+    </plugin>
+    <plugin>
+      <id>WorkAllocation</id>
+      <active>TRUE</active>
+    </plugin>
+  </chat_plugins>
+  <database>
+    <plugin>
+      <id>MemDB</id>
+      <active>TRUE</active>
+    </plugin>
+  </database>
 </plugin_list>
