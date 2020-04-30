@@ -16,7 +16,7 @@ var websocket = socketio(server);
 var previous_messages = []
 
 
-server.listen(3000, function(){
+server.listen(3000,"0.0.0.0", function(){
   console.log('listening on *:3000');
 });
 
@@ -38,14 +38,14 @@ websocket.on('connection', function(socket){
   });
   socket.on("MSSG1",function(msg){
     //print out
-    console.log(msg);
+    //console.log(msg);
     pm.database.addMessage(msg);
     //run any plugin functiolnality on tihs message
     msg = pm.runChatPlugins(msg)
 
     //save to log of previous messages
     previous_messages.push(msg);
-    console.log(previous_messages)
+    //console.log(previous_messages)
     //send to the other connected clients
     socket.emit('chat message',msg);
     socket.broadcast.emit('chat message',msg);
