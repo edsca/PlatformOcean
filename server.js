@@ -41,13 +41,16 @@ websocket.on('connection', function(socket){
     //console.log(msg);
     pm.database.addMessage(msg);
     //run any plugin functiolnality on tihs message
-    msg = pm.runChatPlugins(msg)
+    msgList = pm.runChatPlugins(msg)
+    //console.log(msgList)
 
-    //save to log of previous messages
-    previous_messages.push(msg);
-    //console.log(previous_messages)
-    //send to the other connected clients
-    socket.emit('chat message',msg);
-    socket.broadcast.emit('chat message',msg);
+    for(var i = 0;i<msgList.length;i++){
+      //save to log of previous messages
+      previous_messages.push(msgList[i]);
+      //send to the other connected clients
+      socket.emit('chat message',msgList[i]);
+      socket.broadcast.emit('chat message',msgList[i]);
+    }
+
   })
 });

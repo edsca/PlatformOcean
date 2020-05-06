@@ -26,7 +26,7 @@ class PluginManager  {
       }
     }
 
-  console.log(this.chatPluginList)
+  //console.log(this.chatPluginList)
 
   }
   loadDB(){
@@ -37,16 +37,20 @@ class PluginManager  {
     for(var i=0;i<this.chatPluginList.length;i++){
       if(this.chatPluginList[i].userProps!=null) this.database.addUserColumn(this.chatPluginList[i].userProps)
     }
-    console.log(this.database)
+    //console.log(this.database)
   }
 
   runChatPlugins(msg){
+    var msgList = [msg]
     for(var i = 0;i<this.chatPluginList.length;i++)
     {
-      console.log(this.chatPluginList[i])
-      msg = this.chatPluginList[i].run(msg,this.database)
+      //console.log(this.chatPluginList[i])
+
+      var state = this.chatPluginList[i].run(msgList,this.database)
+      msgList = state.msgList
+      this.database = state.db
     }
-    return msg
+    return msgList
   }
 }
 

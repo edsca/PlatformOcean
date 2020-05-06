@@ -16,55 +16,60 @@ class WorkAllocation {
     this.jobList = config['jobList'];
     this.numberJobs = this.jobList.length;
   }
-  run(msg,db){
+  run(msgList,db){
     try{
-      if(msg.message.startsWith("wa.")){
-        if(msg.message.startsWith("wa.joblist")){
-          msg.message = "\n"+JSON.stringify(this.jobList)+"\n";
-          msg.name = "Server";
-        }
-        else if(msg.message.startsWith("wa.take")){
-          //assign a job to self
-          var jobIndex = parseInt(msg.message.substring(8))
-          this.jobList[jobIndex].assignee = msg.name;
 
-          msg.message = "\n"+JSON.stringify(this.jobList)+"\n";
-          msg.name = "Server";
+      if(msgList[0].message.startsWith("wa.")){
+        var waResponse = {name:"Server",message:"",timestamp:new Date()};
+
+        if(msgList[0].message.startsWith("wa.joblist")){
+          waResponse.message = "\n"+JSON.stringify(this.jobList)+"\n";
+
         }
-        else if(msg.message.startsWith("wa.addjob")){
+        else if(msgList[0].message.startsWith("wa.take")){
+          //assign a job to self
+          var jobIndex = parseInt(msgList[0].message.substring(8))
+          this.jobList[jobIndex].assignee = msgList[0].name;
+
+          waResponse.message = "\n"+JSON.stringify(this.jobList)+"\n";
+
+        }
+        else if(msgList[0].message.startsWith("wa.addjob")){
           this.numberJobs = this.numberJobs+1;
-          var description = msg.message.substring(9)
+          var description = msgList[0].message.substring(9)
           this.jobList.push({description:description,assignee:"None"})
 
-          msg.message = "\n"+JSON.stringify(this.jobList)+"\n";
-          msg.name = "Server";
-        }
-        else if(msg.message.startsWith("wa.complete")){
-          var jobIndex = parseInt(msg.message.substring(11));
-          if(this.jobList[jobIndex].assignee==msg.name){
-            this.jobList.splice(jobIndex,jobIndex);
-            msg.message = "\n"+JSON.stringify(this.jobList)+"\n";
+          waResponse.message = "\n"+JSON.stringify(this.jobList)+"\n";
 
-            var usr = db.getUser(msg.name);
+        }
+        else if(msgList[0].message.startsWith("wa.complete")){
+          var jobIndex = parseInt(msgList[0].message.substring(11));
+          if(this.jobList[jobIndex].assignee==msgList[0].name){
+            this.jobList.splice(jobIndex,jobIndex);
+            waResponse.message = "\n"+JSON.stringify(this.jobList)+"\n";
+
+
+            var usr = db.getUser(msgList[0].name);
             usr.row.jobsCompleted += 1;
             db.updateUser(usr);
 
           }
           else{
-            msg.message = "This job is not assigned to you"
+            waResponse.message = "This job is not assigned to you"
           }
 
 
         }
         else{
-          msg.message = "invalid work allocation command"
+          waResponse.message = "invalid work allocation command"
         }
-        msg.name = "Server";
+      waResponse.name = "Server";
+
+      msgList.push(waResponse);
       }
     }
-    catch(err){}
-
-    return msg;
+    catch(err){console.log(err)}
+    return {"msgList":msgList,"db":db};;
   }
 }
 

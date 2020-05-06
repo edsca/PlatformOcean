@@ -3,21 +3,21 @@
   <chat_plugins>
     <plugin>
       <id>WordFilter</id>
-      <active>TRUE</active>
-    </plugin>
-    <plugin>
-      <id>Voting</id>
-      <active>FALSE</active>
+      <active>true</active>
     </plugin>
     <plugin>
       <id>WorkAllocation</id>
-      <active>TRUE</active>
+      <active>true</active>
+    </plugin>
+    <plugin>
+      <id>Awards</id>
+      <active>true</active>
     </plugin>
   </chat_plugins>
   <database>
     <plugin>
       <id>MemDB</id>
-      <active>TRUE</active>
+      <active>true</active>
     </plugin>
   </database>
 </plugin_list>
