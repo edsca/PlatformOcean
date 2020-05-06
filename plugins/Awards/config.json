@@ -1,0 +1,11 @@
+{
+  "awards":[
+    {
+      "type":"jobsCompleted","levels":[
+        {"awardName":"bronze","requirement":1},
+        {"awardName":"silver","requirement":2},
+        {"awardName":"gold","requirement":3}
+      ]
+    }
+  ]
+}

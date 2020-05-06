@@ -13,6 +13,7 @@ class MemDB{
   }
   prepareUserDB(){
     this.users = [];
+    this.updated = "";
   }
   prepareMsgDB(){
     this.messages = [];
@@ -21,6 +22,7 @@ class MemDB{
     this.userProps.push(property_list)
   }
   addUser(uname){
+    console.log(uname)
     var user = {}
     //is this already in the database
     for(var i = 0;i<this.users.length;i++){
@@ -40,7 +42,7 @@ class MemDB{
   }
 
   getUser(uname){
-    console.log(this.users.length)
+
     for(var i = 0;i<this.users.length;i++){
       console.log(this.users[i].uname)
       if(this.users[i].uname==uname){
@@ -51,6 +53,7 @@ class MemDB{
   }
 
   updateUser(usr){
+    this.updated = usr.row.uname;
     this.users[usr.index] = usr.row;
     console.log('test')
   }
