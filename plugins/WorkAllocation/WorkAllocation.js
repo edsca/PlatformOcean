@@ -4,7 +4,7 @@ class WorkAllocation {
 
   jobList = []
   numberJobs = 0
-  userProps = {"property":"jobsCompleted","default_value":0}
+  userProps = [{"property":"jobsCompleted","default_value":0}]
 
 
   constructor(){

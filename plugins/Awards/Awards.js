@@ -2,7 +2,7 @@ var fs = require('fs')
 
 class Awards {
 
-  userProps = {"property":"awards","default_value":[]}
+  userProps = [{"property":"awards","default_value":[]}]
 
   constructor(){
 
