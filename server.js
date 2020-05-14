@@ -11,9 +11,7 @@ var app = express();
 var server = http.Server(app);
 var websocket = socketio(server);
 
-
-
-var previous_messages = []
+var config = require('./about.json');
 
 
 server.listen(3000,"0.0.0.0", function(){
@@ -29,27 +27,25 @@ websocket.on('connection', function(socket){
     console.log('JOINED:' + name);
     pm.database.addUser(name);
     //send the new person previous messages
-    for(var i = 0; i<previous_messages.length;i++){
-      socket.emit('chat message',previous_messages[i])
+    for(var i = 0; i<pm.database.getAllMessages().length;i++){
+      socket.emit('serverToClient',pm.database.getMessage(i))
     }
-
-    socket.emit('chat message',    {name:'Server',message:name+", welcome to the chat",timestamp:new Date()}) //send to newly connected guy
-    socket.broadcast.emit('chat message',    {name:'Server',message:name+", has joined",timestamp:new Date()}) //send to everyone else
+    socket.emit('config', config)
+    socket.emit('serverToClient',    {name:'Server',message:name+", welcome to the chat",timestamp:new Date()}) //send to newly connected guy
+    socket.broadcast.emit('serverToClient',    {name:'Server',message:name+", has joined",timestamp:new Date()}) //send to everyone else
   });
-  socket.on("MSSG1",function(msg){
-    //print out
-    //console.log(msg);
-    pm.database.addMessage(msg);
+  socket.on("clientToServer",function(msg){
+
     //run any plugin functiolnality on tihs message
     msgList = pm.runChatPlugins(msg)
     //console.log(msgList)
 
     for(var i = 0;i<msgList.length;i++){
       //save to log of previous messages
-      previous_messages.push(msgList[i]);
+      pm.database.addMessage(msgList[i]);
       //send to the other connected clients
-      socket.emit('chat message',msgList[i]);
-      socket.broadcast.emit('chat message',msgList[i]);
+      socket.emit('serverToClient',msgList[i]);
+      socket.broadcast.emit('serverToClient',msgList[i]);
     }
 
   })
