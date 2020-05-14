@@ -3,6 +3,7 @@ var fs = require('fs');
 class WordFilter {
 
   filterList = []
+  userProps = null
 
   constructor(){
     //load config set parameters
@@ -13,13 +14,13 @@ class WordFilter {
     var config = require('./config.json');
     this.filterList = config['filterList'];
   }
-  run(msg){
+  run(msgList,db){
     for(var i = 0;i<this.filterList.length;i++)
     {
-      msg.message = msg.message.replace(new RegExp(this.filterList[i], 'gi'),"*");
+      msgList[0].message = msgList[0].message.replace(new RegExp(this.filterList[i], 'gi'),"*");
       //msg = msg.replace(this.filterList[i],"*");
     }
-    return msg;
+    return {"msgList":msgList,"db":db};
   }
 }
 
