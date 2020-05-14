@@ -18,6 +18,17 @@ class MemDB{
   prepareMsgDB(){
     this.messages = [];
   }
+
+  addMessage(message){
+    this.messages.push(message);
+  }
+  getAllMessages(){
+    return this.messages;
+  }
+  getMessage(i){
+    return this.messages[i];
+  }
+
   addUserColumn(property_list){
     this.userProps.push(property_list)
   }
@@ -37,10 +48,6 @@ class MemDB{
     user.uname=uname;
     this.users.push(user);
   }
-  addMessage(message){
-    this.messages.push(message);
-  }
-
   getUser(uname){
 
     for(var i = 0;i<this.users.length;i++){

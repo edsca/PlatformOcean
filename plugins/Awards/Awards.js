@@ -12,18 +12,17 @@ class Awards {
   loadConfig(){
     var config = require('./config.json');
     this.awards = config['awards'];
-    console.log(this.awards[0])
+
   }
 
   run(msgList,db){
     //if the database is updated by an action
     try{
-      console.log('running award allocatorer')
+
 
       if(db.updated!=""){
         var usr = db.getUser(db.updated)
-        console.log(usr.row)
-        console.log(this.awards)
+
 
         for(var i=0;i<this.awards.length;i++){
           for(var j=0;j<this.awards[i].levels.length;j++){
