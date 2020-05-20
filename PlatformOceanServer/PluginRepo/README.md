@@ -2,9 +2,9 @@
 Platform Ocean servers are customisable with plug-ins.
 These plug-ins come in 2 forms at the moment.
 1. ChatPlugins: These extend the I/O functionality of the server by parsing, interpreting and acting on messages sent between clients and servers.
-  - Format is given in [TemplateChat](TemplateChat)
+    - Format is given in [TemplateChat](TemplateChat)
 2. DatabasePlugins: These modify the way that the server handles the storage of data.
-  - Format is given in [TemplateDB](TemplateDB)
+    - Format is given in [TemplateDB](TemplateDB)
 
 ## Plug-in format
 Plug-ins consist of 2 files:
