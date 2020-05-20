@@ -11,7 +11,7 @@
     </plugin>
     <plugin>
       <id>WorkAllocation</id>
-      <active>no</active>
+      <active>yes</active>
     </plugin>
     <plugin>
       <id>Awards</id>

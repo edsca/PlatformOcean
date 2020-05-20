@@ -2,10 +2,6 @@ var fs = require('fs');
 
 class WorkAllocation {
 
-  jobList = []
-  numberJobs = 0
-  userProps = [{"property":"jobsCompleted","default_value":0}]
-
 
   constructor(){
     //load config set parameters
@@ -15,6 +11,8 @@ class WorkAllocation {
     var config = require('./config.json');
     this.jobList = config['jobList'];
     this.numberJobs = this.jobList.length;
+    this.userProps = config['userProps']
+    console.log(this.userProps)
   }
   run(msgList,db){
     try{

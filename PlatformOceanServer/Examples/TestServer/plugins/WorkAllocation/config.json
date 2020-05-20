@@ -1,4 +1,5 @@
  {
+  "userProps": [{"property":"jobsCompleted","default_value":0}],
   "jobList": [
     {
       "description": "a sample job",
