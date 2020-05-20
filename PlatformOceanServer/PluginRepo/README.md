@@ -9,4 +9,4 @@ These plug-ins come in 2 forms at the moment.
 ## Plug-in format
 Plug-ins consist of 2 files:
 1. `<plugin_name>/<plugin_name>.js` handles the logic driving the plug-in.
-2. `<plugin_name>/<plugin_name>.js` contains whatever user-defined meta data or customisable parameters is needed for this plug-in to behave.
+2. `<plugin_name>/config.json` contains whatever user-defined meta data or customisable parameters is needed for this plug-in to behave. As an example, the [WorkAllocation](WorkAllocation) Plug-in currently tracks a property called `jobsCompleted`. This can be changed in `config.json` to track anything without effecting the internal workings.
