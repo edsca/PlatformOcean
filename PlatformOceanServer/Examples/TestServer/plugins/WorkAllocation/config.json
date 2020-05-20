@@ -1,0 +1,12 @@
+ {
+  "jobList": [
+    {
+      "description": "a sample job",
+      "assignee": "None"
+    },
+    {
+      "description": "another sample job",
+      "assignee": "None"
+    }
+  ]
+}

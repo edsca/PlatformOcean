@@ -1,0 +1,8 @@
+{
+  "admins":["Admin"],
+  "states":[
+    {"stateName":"atHome","stateEffector":"self","nextState":"droppedOff"},
+    {"stateName":"droppedOff","stateEffector":"admin","nextState":"readyForPickup"},
+    {"stateName":"readyForPickup","stateEffector":"self","nextState":"atHome"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "PlatformOcean",
+  "version": "0.0.1",
+  "description": "Platform Ocean Server",
+  "dependencies": {
+    "express": "^4.17.1",
+    "gitignore": "^0.6.0",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.1.1",
+    "xml2json": "^0.12.0"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "userProps":[
+    {"property":"contactNumber","default_value":0},
+    {"property":"email","default_value":"false"}
+  ]
+}
