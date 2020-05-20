@@ -11,6 +11,6 @@ The design and development of the Platform Ocean meta-platform was the Final Yea
 - [PlatformOceanServer](PlatformOceanServer)
   - Contains the Platform Ocean server-side implementation and plug-in architecture as well as the exemplar server instances generated.
   
-- PlatformOceanClient
+- [PlatformOceanClient](PlatformOceanClient)
   - Contains the Platform Ocean client-side implementation and exemplar clients.
 
