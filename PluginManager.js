@@ -18,7 +18,8 @@ class PluginManager  {
 
     for(var i=0;i<plugins.length;i++){
       var plugin = plugins[i]
-      if(plugin.active){
+      if(plugin.active['$t']=='yes'){
+
         var pluginloc = './plugins/'+plugin.id['$t']+'/'+plugin.id['$t']+'.js'
         var plg = require(pluginloc)
         this.chatPluginList.push(new plg())
@@ -35,9 +36,10 @@ class PluginManager  {
     var database = require(dbloc)
     this.database = new database()
     for(var i=0;i<this.chatPluginList.length;i++){
+
       if(this.chatPluginList[i].userProps!=null) this.database.addUserColumn(this.chatPluginList[i].userProps)
     }
-    //console.log(this.database)
+
   }
 
   runChatPlugins(msg){
