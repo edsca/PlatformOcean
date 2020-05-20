@@ -30,7 +30,7 @@ class MemDB{
   }
 
   addUserColumn(property_list){
-    this.userProps.push(property_list)
+    this.userProps = this.userProps.concat(property_list)
   }
   addUser(uname){
     console.log(uname)
