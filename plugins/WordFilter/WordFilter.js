@@ -15,11 +15,13 @@ class WordFilter {
     this.filterList = config['filterList'];
   }
   run(msgList,db){
-    for(var i = 0;i<this.filterList.length;i++)
-    {
-      msgList[0].message = msgList[0].message.replace(new RegExp(this.filterList[i], 'gi'),"*");
-      //msg = msg.replace(this.filterList[i],"*");
-    }
+    try{
+      for(var i = 0;i<this.filterList.length;i++)
+      {
+        msgList[0].message = msgList[0].message.replace(new RegExp(this.filterList[i], 'gi'),"*");
+        //msg = msg.replace(this.filterList[i],"*");
+      }
+    }catch(err){console.log(err)}
     return {"msgList":msgList,"db":db};
   }
 }
