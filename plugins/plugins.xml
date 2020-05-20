@@ -2,22 +2,34 @@
 <plugin_list>
   <chat_plugins>
     <plugin>
+      <id>Approval</id>
+      <active>no</active>
+    </plugin>
+    <plugin>
       <id>WordFilter</id>
-      <active>true</active>
+      <active>no</active>
     </plugin>
     <plugin>
       <id>WorkAllocation</id>
-      <active>true</active>
+      <active>no</active>
     </plugin>
     <plugin>
       <id>Awards</id>
-      <active>true</active>
+      <active>no</active>
+    </plugin>
+    <plugin>
+      <id>Profile</id>
+      <active>no</active>
+    </plugin>
+    <plugin>
+      <id>ObjectTracking</id>
+      <active>yes</active>
     </plugin>
   </chat_plugins>
   <database>
     <plugin>
       <id>MemDB</id>
-      <active>true</active>
+      <active>yes</active>
     </plugin>
   </database>
 </plugin_list>
