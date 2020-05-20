@@ -38,7 +38,14 @@ websocket.on('connection', function(socket){
 
     //run any plugin functiolnality on tihs message
     msgList = pm.runChatPlugins(msg)
-    //console.log(msgList)
+    try{
+      uname  = msgList[0].name
+      var usr = pm.database.getUser(msgList[0].name);
+      console.log(usr.row)
+      socket.emit('userUpdate',usr.row)
+    }catch(err){console.log(err)}
+
+    console.log(msgList)
 
     for(var i = 0;i<msgList.length;i++){
       //save to log of previous messages
