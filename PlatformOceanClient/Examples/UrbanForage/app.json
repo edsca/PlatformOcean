@@ -1,0 +1,17 @@
+{
+  "name": "UrbanForage",
+  "displayName": "UrbanForage",
+  "expo": {
+    "name": "UrbanForage",
+    "slug": "UrbanForage",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
