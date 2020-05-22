@@ -1,0 +1,17 @@
+{
+  "name": "UrbanRefill",
+  "displayName": "UrbanRefill",
+  "expo": {
+    "name": "UrbanRefill",
+    "slug": "UrbanRefill",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

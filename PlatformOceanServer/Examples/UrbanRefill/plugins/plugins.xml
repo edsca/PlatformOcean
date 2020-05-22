@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_list>
+  <chat_plugins>
+    <plugin>
+      <id>Approval</id>
+      <active>yes</active>
+    </plugin>
+    <plugin>
+      <id>Awards</id>
+      <active>yes</active>
+    </plugin>
+    <plugin>
+      <id>Profile</id>
+      <active>yes</active>
+    </plugin>
+    <plugin>
+      <id>ObjectTracking</id>
+      <active>yes</active>
+    </plugin>
+  </chat_plugins>
+  <database>
+    <plugin>
+      <id>MemDB</id>
+      <active>yes</active>
+    </plugin>
+  </database>
+</plugin_list>

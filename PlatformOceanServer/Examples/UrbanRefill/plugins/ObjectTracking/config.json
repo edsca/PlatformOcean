@@ -1,0 +1,12 @@
+{
+  "admins":["Admin"],
+  "userProps":[
+    {"property":"objects","default_value":[]},
+    {"property":"bottlesRefilled","default_value":0}
+  ],
+  "states":[
+    {"stateName":"atHome","stateEffector":"self","nextState":"droppedOff","final":false},
+    {"stateName":"droppedOff","stateEffector":"admin","nextState":"readyForPickup","final":false},
+    {"stateName":"readyForPickup","stateEffector":"self","nextState":"atHome","final":true}
+  ]
+}

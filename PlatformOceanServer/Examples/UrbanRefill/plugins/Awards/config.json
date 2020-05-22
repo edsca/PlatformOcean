@@ -1,0 +1,11 @@
+{
+  "awards":[
+    {
+      "type":"bottlesRefilled","levels":[
+        {"awardName":"bronze","requirement":1},
+        {"awardName":"silver","requirement":3},
+        {"awardName":"gold","requirement":5}
+      ]
+    }
+  ]
+}
