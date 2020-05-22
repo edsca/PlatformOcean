@@ -14,3 +14,7 @@ This system consists of three layers:
   - Contains the core and management layer functionality of the Platform Ocean system.
 - [PluginRepo](PluginRepo)
   - Contains the currently supported Platform Ocean Plug-ins.
+
+## Note
+To access a PlatformOcean Server from outside its local area network, you will need to set up Port Forwarding on your router.
+Port Forwarding exposes your network to the outside world so please ensure you understand the risks before doing this.
