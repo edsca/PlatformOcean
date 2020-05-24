@@ -85,8 +85,6 @@ class ObjectTracking {
             console.log("this person has not got permissions to do this")
           }
 
-          usr.row.objects.push(obj);
-          db.updateUser(usr);
          }
       }
     }catch(err){console.log(err)}

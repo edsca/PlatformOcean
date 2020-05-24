@@ -70,6 +70,7 @@ class ObjectTracking {
             var usr = db.getUser(uname);
             for(var i = 0;i<usr.row.objects.length;i++){
               if(usr.row.objects[i].objName==objName){
+                console.log("made it here")
                 //are we, as an admin, permitted to make this state change
                 if(usr.row.objects[i].state.stateEffector=="admin"){
                   for(var j=0;j<this.states.length;j++){
@@ -78,7 +79,7 @@ class ObjectTracking {
                         usr.row[this.userProps[1].property]+=1
                       }
                       usr.row.objects[i].state=this.states[j]
-                      console.log(usr.row.objects[i])
+                      console.log("this is broken")
                       db.updateUser(usr);
                       console.log(usr.row)
                       break
@@ -93,8 +94,6 @@ class ObjectTracking {
             console.log("this person has not got permissions to do this")
           }
 
-          usr.row.objects.push(obj);
-          db.updateUser(usr);
          }
       }
     }catch(err){console.log(err)}
