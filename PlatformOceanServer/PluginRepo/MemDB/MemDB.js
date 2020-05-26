@@ -1,8 +1,7 @@
 class MemDB{
   //storing all users and message logs in memory instead of database software
 
-  userProps = [{"property":"uname","default_value":""}]
-
+  
   constructor(){
     this.loadConfig()
     this.prepareUserDB()
@@ -10,6 +9,7 @@ class MemDB{
   }
   loadConfig(){
     var config = require('./config.json');
+    this.userProps = config['userProps']
   }
   prepareUserDB(){
     this.users = [];
