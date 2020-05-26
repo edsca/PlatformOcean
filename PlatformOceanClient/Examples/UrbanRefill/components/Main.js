@@ -20,6 +20,8 @@ class Main extends Component {
             });
       window.socket.emit('JOINED',window.uname);
       window.socket.on('serverToClient',(msg) => {this.updateChat(msg)})
+      window.socket.on('userUpdate',(usr)=>{window.profile = usr})
+      window.socket.emit('clientToServer',{name:window.uname,message:"",timestamp:new Date()})
       window.socket.on('config',(config)=>{this.setConfig(config)})
       window.socket.on('disconnect',() =>{this.updateChat({name:"local",message:"You've Disconnected. Hold Tight",timestamp:new Date()})})
       window.uname = window.uname
@@ -91,7 +93,7 @@ class Main extends Component {
         <Button
           style={{marginTop:20,backgroundColor:'Black',borderColor:'Black',borderWidth:2}}
           title = "About This Server"
-          onPress = {() => {Actions.info()}}
+          onPress = {() => {Actions.info({config:this.state.config})}}
         />
         <Text>
           {this.renderConfig()}
