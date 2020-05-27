@@ -24,7 +24,6 @@ class Profile {
             console.log(msgList[0].message.substring(this.userProps[i].property.length+4))
             usr.row[this.userProps[i].property]=msgList[0].message.substring(this.userProps[i].property.length+4)
             db.updateUser(usr)
-            msgList = {}
             break
           }
         }
