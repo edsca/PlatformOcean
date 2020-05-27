@@ -1,0 +1,7 @@
+{
+  "userProps":[
+    {"property":"contactNumber","default_value":0},
+    {"property":"email","default_value":"false"},
+    {"property":"postCode","default_value":"not_set"}
+  ]
+}

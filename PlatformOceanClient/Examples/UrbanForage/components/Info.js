@@ -6,12 +6,28 @@ import {Actions} from 'react-native-router-flux';
 
 class Info extends Component {
 
+  renderHeading = ()=>{
+    return(
+      <Text style={{fontSize:25}}>
+        {this.props.config.heading}
+      </Text>
+    )
+  }
+
+  renderDescription = ()=>{
+    return(
+      <Text style={{fontSize:14}}>
+        {this.props.config.description}
+      </Text>
+    )
+  }
 
   render(){
     return(
-      <Text>
-      aa
-      </Text>
+      <View>
+        {this.renderHeading()}
+        {this.renderDescription()}
+      </View>
     )
   };
 }

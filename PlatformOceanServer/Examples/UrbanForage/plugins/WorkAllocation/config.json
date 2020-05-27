@@ -1,0 +1,13 @@
+ {
+  "userProps": [{"property":"deliveriesMade","default_value":0}],
+  "jobList": [
+    {
+      "description": {"desc":"Pickup Here","location":{"latitude":51.499078,"longitude":-0.176314}},
+      "assignee": "None"
+    },
+    {
+      "description": {"desc":"Dropoff Here","location":{"latitude":51.500394,"longitude":-0.178151}},
+      "assignee": "None"
+    }
+  ]
+}

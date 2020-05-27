@@ -9,36 +9,43 @@ class Profile extends Component {
   state = {
     email: "",
     contactNumber: 0,
-    profile:{},
+    postCode: "",
+
   }
 
   componentDidMount(){
-    window.socket.on('userUpdate',(usr)=>{this.setState({profile:usr})})
+    window.socket.on('userUpdate',(usr)=>{window.profile = usr})
     window.socket.emit('clientToServer',{name:window.uname,message:"",timestamp:new Date()})
   }
   componentWillUnmount(){
     window.socket.removeAllListeners("userUpdate");
   }
 
+  renderEmail = () =>{
+    return(
+      <View>
+      <Text style={{fontSize:14}}>
+        {"Email: " +window.profile.email}
+      </Text>
+      <TextInput
+        style={{marginLeft:25}}
+        onChangeText = {(newText) => {this.setState({email:newText})}}
+        placeholder='New Email Here'
+      />
+      <Button
+        style={{marginTop:20,backgroundColor:'Black',borderColor:'Black',borderWidth:2}}
+        title = "Update Email"
+        onPress = {() => window.socket.emit('clientToServer',{name:window.uname,message:"pr.email "+this.state.email,timestamp:new Date()})}
+      />
+      </View>
+    )
+  }
 
-  render(){
+  renderContactNumber = () =>{
     return(
       <View>
         <Text style={{fontSize:14}}>
-          {this.state.profile.email}
-        </Text>
-        <TextInput
-          style={{marginLeft:25}}
-          onChangeText = {(newText) => {this.setState({email:newText})}}
-          placeholder='New Email Here'
-        />
-        <Button
-          style={{marginTop:20,backgroundColor:'Black',borderColor:'Black',borderWidth:2}}
-          title = "Update Email"
-          onPress = {() => window.socket.emit('clientToServer',{name:window.uname,message:"pr.email "+this.state.email,timestamp:new Date()})}
-        />
-        <Text style={{fontSize:14}}>
-          {this.state.profile.contactNumber}
+          {"Contact Number: " + window.profile.contactNumber}
         </Text>
         <TextInput
           style={{marginLeft:25}}
@@ -48,10 +55,82 @@ class Profile extends Component {
         <Button
           style={{marginTop:20,backgroundColor:'Black',borderColor:'Black',borderWidth:2}}
           title = "Update Contact Number"
-          onPress = {() => window.socket.emit('clientToServer',{name:window.uname,message:"pr.contactNumber "+this.state.email,timestamp:new Date()})}
+          onPress = {() => window.socket.emit('clientToServer',{name:window.uname,message:"pr.contactNumber "+this.state.contactNumber,timestamp:new Date()})}
+        />
+      </View>
+
+    )
+  }
+
+  renderPostCode =() =>{
+    return(
+      <View>
+        <Text style={{fontSize:14}}>
+          {"PostCode: " + window.profile.postCode}
+        </Text>
+        <TextInput
+          style={{marginLeft:25}}
+          onChangeText = {(newText) => {this.setState({postCode:newText})}}
+          placeholder='New PostCode (first 2/3 letters/numbers)'
+        />
+        <Button
+          style={{marginTop:20,backgroundColor:'Black',borderColor:'Black',borderWidth:2}}
+          title = "Update Post Code"
+          onPress = {() => window.socket.emit('clientToServer',{name:window.uname,message:"pr.postCode "+this.state.postCode,timestamp:new Date()})}
         />
       </View>
     )
+  }
+
+  renderDeliveriesMade = () =>{
+    return(
+      <Text style={{fontSize:14}}>
+        {"You have successfully made " + window.profile.deliveriesMade+" deliveries"}
+      </Text>
+    )
+  }
+
+  renderAwards = () =>{
+    return(
+      <Text style={{fontSize:14}}>
+        {"You have earned the following awards: " + JSON.stringify(window.profile.awards)}
+      </Text>
+    )
+  }
+
+  renderApproval = () =>{
+    return(
+      <Text style={{fontSize:14}}>
+        {"Approved to send messages: " + window.profile.approved}
+      </Text>
+    )
+  }
+
+
+  render(){
+    try{
+      return(
+        <View>
+
+          <View>
+            {this.renderEmail()}
+            {this.renderContactNumber()}
+            {this.renderPostCode()}
+            {this.renderDeliveriesMade()}
+            {this.renderAwards()}
+            {this.renderApproval()}
+          </View>
+        </View>
+      )
+    }catch(err){
+      return(
+        <View>
+          <Text>
+            {"page couldn't load. Check Server is online"}
+          </Text>
+        </View>
+      )
+  }
   };
 }
 

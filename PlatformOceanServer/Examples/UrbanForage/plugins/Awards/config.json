@@ -1,0 +1,11 @@
+{
+  "awards":[
+    {
+      "type":"deliveriesMade","levels":[
+        {"awardName":"firstDelivery","requirement":1},
+        {"awardName":"fifthDelivery","requirement":5},
+        {"awardName":"tenthDelivery","requirement":10}
+      ]
+    }
+  ]
+}
