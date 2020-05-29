@@ -6,13 +6,24 @@ import {Actions} from 'react-native-router-flux';
 
 class Bottles extends Component {
 
+
+
   state = {
     newBottleName:"",
     reset:0,
     adminBottleName:"",
+    adminBottleUserName:"",
+  }
+
+  componentDidMount(){
+    if(this.props.fromBarcode){
+      this.setState({newBottleName:this.props.newBarcode,adminBottleName:this.props.adminBarcode})
+    }
   }
 
   renderBottles = () =>{
+
+
     var bottles = window.profile.objects;
     return window.profile.objects.map((object, index) =>{
       return(
@@ -41,18 +52,36 @@ class Bottles extends Component {
       return(
         <View>
           <Text style={{fontSize:14}}>
-            {"As an Admin you can mark bottles in your posession as ready for pickup"}
+            {"As an Admin you can mark bottles in your possession as ready for pickup"}
           </Text>
           <TextInput
             style={{marginLeft:25}}
-            onChangeText = {(newText) => {this.setState({adminBottleName:newText})}}
-            placeholder='Type <name>:<BottleName>'
+            onChangeText = {(newText) => {this.setState({adminBottleUserName:newText})}}
+            placeholder='Type user name'
           />
+          <Text>
+            {"Scanned Barcode: "+this.state.adminBottleName}
+          </Text>
+          <Text>
+            {"BottleID: "+this.state.adminBottleUserName+":"+this.state.adminBottleName}
+          </Text>
+          <Button
+            style={{marginTop:20,backgroundColor:'Black',borderColor:'Black',borderWidth:2}}
+            title = "Scan a Barcode to get the bottle id"
+            onPress = {() => {Actions.scanner({bType:'existingBottle'})}}
+          />
+
           <Button
             style={{marginTop:20,backgroundColor:'Black',borderColor:'Black',borderWidth:2}}
             title = "Advance the specified Bottle"
             onPress = {() => {
-              var msg = {name:window.uname,message:"ot.adminvance "+this.state.adminBottleName,timestamp:new Date()}
+              var msg = {
+                  name:window.uname,message:"ot.adminvance "
+                  +this.state.adminBottleUserName
+                  +":"
+                  +this.state.adminBottleName,
+                  timestamp:new Date()
+                }
               window.socket.emit('clientToServer',msg);
               this.setState({reset:1})
               }
@@ -73,10 +102,13 @@ class Bottles extends Component {
   renderNewBottles = () =>{
     return(
       <View>
-      <TextInput
-        style={{marginLeft:25}}
-        onChangeText = {(newText) => {this.setState({newBottleName:newText})}}
-        placeholder='New Bottle Name Here'
+      <Text>
+        {"Scanned Barcode: "+this.state.newBottleName}
+      </Text>
+      <Button
+        style={{marginTop:20,backgroundColor:'Black',borderColor:'Black',borderWidth:2}}
+        title = "Scan a Barcode to add a new bottle"
+        onPress = {() => {Actions.scanner({bType:'newBottle'})}}
       />
       <Button
         style={{marginTop:20,backgroundColor:'Black',borderColor:'Black',borderWidth:2}}

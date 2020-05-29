@@ -6,6 +6,7 @@ import Main from './components/Main';
 import Profile from './components/Profile';
 import Bottles from './components/Bottles';
 import Info from './components/Info';
+import BCScanner from './components/BCScanner'
 
 
 
@@ -18,6 +19,7 @@ export default function App() {
         <Scene key='profile' component={Profile} title="Profile"/>
         <Scene key='bottles' component={Bottles} title="My Bottles"/>
         <Scene key='info' component={Info}  title="Information"/>
+        <Scene key='scanner' component={BCScanner} title="Scan a Bar Code"/>
       </Scene>
     </Router>
   );
