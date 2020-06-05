@@ -6,3 +6,12 @@ A list of userProps in `config.json` determines what additional information that
 ## Commands
 
 - `pr.<property> <value>`: instantiates/updates property <property> vith value <value>
+
+## XML
+
+```xml
+    <plugin>
+      <id>Profile</id>
+      <active>yes</active>
+    </plugin>
+```
