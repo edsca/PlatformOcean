@@ -98,14 +98,7 @@ class Main extends Component {
         <Text>
           {this.renderConfig()}
         </Text>
-        <ScrollView style={styles.textBox}>
-          {this.renderChat()}
-        </ScrollView>
-          <TextInput
-            value={this.state.msgToSend}
-            onChangeText={(msgToSend) => this.setState({msgToSend: msgToSend})}
-            placeholder="Type message here!"
-          />
+        
         </View>
         <View>
           <Button
