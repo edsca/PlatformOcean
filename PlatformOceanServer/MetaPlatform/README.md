@@ -8,4 +8,4 @@ npm install to install the required dependencies for this node js project
 
 
 run with:
-node server.js
+npm start
